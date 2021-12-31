@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudo com Jquery</title>
+
+    
+</head>
+<body>
+
+    
+            
+            <input type="nome" name="nome" id="nome"  placeholder="Digite o seu cep">
+    
+        
+
+        <button id="button">Clique aqui</button>
+
+        <table>
+            <tr>
+                <th>idade</th>
+                <th>profissao</th>
+            </tr>
+           
+           <tr>
+            <td id="idade"></td>
+            <td id="profissao"></td>
+        </tr>
+        </table>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+       const objs = [
+           {
+        "nome":"Edson",
+        "idade": 21,
+        "profissao":"Programador",
+        "passatempos": ["jogos","filmes"] 
+           },
+           {
+        "nome":"lucas",
+        "idade": 24,
+        "profissao":"jogador",
+        "passatempos": ["jogos","filmes"]
+           },
+           {
+            "nome":"luiza",
+        "idade": 29,
+        "profissao":"medica",
+        "passatempos": ["jogos","filmes"]
+           }]
+        //convertendo o objeto para json
+           const JsonData = JSON.stringify(objs)
+           console.log(JsonData)
+           console.log(typeof JsonData)
+
+         //convertendo  o json para objeto
+         const objData = JSON.parse(JsonData)
+         document.write(objData)  
+        
+        
+
+        //$("#Azul").hide() Esconder o codigo 
+        //$("#Azul").show() mostra o codigo 
+       // $("#Azul").text("Ola") altera o texto do codigo
+       // $("#Azul").html("<h1>Texto</h1>"); botando um html no codigo
+      // $("#Azul").addClass("Verde") botando uma div no codigo
+       
+
+    $(document).ready(function(){
+        $("#button").click(function (){
+            var nome = $("#nome").val();
+            $.getJSON("NewPro00/Projeto008/Pro008/dados" + nome + "/json",function(objData){
+              
+               $("#idade").text(objData.idade)
+                 $("#profissao").text(objData.profissao)
+            })
+            
+           
+
+        })
+    })
+
+
+    </script>
+</body>
+
+</html>

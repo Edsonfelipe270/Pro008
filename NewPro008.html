@@ -74,7 +74,22 @@
             <input type="checkbox" name="Passatempo[]" id="Passatempo">Esportes
             <input type="checkbox" name="Passatempo[]" id="Passatempo">Outros
         </div>
+            
+            <input type="cep" name="cep" id="cep" placeholder="Digite o seu Cep"><br>
+        
 
+        
+            <button id ="botao">Confirmar</button><br>
+    
+        
+            Seu Bairro
+        <input type="text" name="bairro" id="bairro"><br>
+
+
+
+        Sua Rua:
+        <input type="text" name="logradouro" id="logradouro">
+    
         <div class="texto">
             Quem é voce:<br>
             <textarea rows="6" style="width: 09cm"></textarea>
@@ -89,7 +104,23 @@
         <div class="Buttons">
             <input type="submit" value="Cadastrar">
         </div>
+        
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function(){
+        $("#botao").click(function (){
+            var cep = $("#cep").val();
+            $.getJSON("https://viacep.com.br/ws/" + cep + "/json",function(endereço){
+              
+               $("#bairro").val(endereço.bairro);
+                 $("#logradouro").val(endereço.logradouro)
+            })
+            
+           
 
+        })
+    })
+    </script>
 </body>
 </html>
